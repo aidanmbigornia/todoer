@@ -49,12 +49,10 @@ function App() {
     if (inputValue === '') {
       const index = todos.findIndex((todo) => todo.id === id);
       const updatedTodoList = [...todos];
-      if (index !== -1) {
+      if (index !== -1 && confirm(`update todo item: ${todos[index].name}?`)) {
         updatedTodoList.splice(index, 1);
-      }
-      setTodos(updatedTodoList);
-      if (index !== -1) {
         setInputValue(todos[index].name);
+        setTodos(updatedTodoList);
       }
     }
   }
@@ -62,8 +60,9 @@ function App() {
   const handleDeleteTodo = (id) => {
     const index = todos.findIndex(todo => todo.id === id);
     const updateTodo = [...todos];
-    if (index !== -1) {
-      updateTodo.splice(index, 1);
+    if (index !== -1 && confirm(`remove todo item: ${todos[index].name}?`)) {
+      
+      updateTodo.splice(index, 1)      
     }
     setTodos(updateTodo);
   }
