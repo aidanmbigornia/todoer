@@ -2,6 +2,7 @@
     --clr-green: #0eff4e;
     --clr-violet: #7933ff;
     --clr-black: #000C14;
+    --clr-gray: #46525a;
     --clr-white: #e9e9e9;
 }
 
@@ -29,19 +30,53 @@
 }
 
 .complete,
-.remove {
-    cursor: pointer;
+.remove,
+.update {
     display: grid;
     place-items: center;
 }
 
+.update-btn {
+    scale: calc(0.9);
+}
+
+.check-btn {
+    appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 4px;
+    background-color: var(--clr-violet);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:after {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f14a";
+        font-size: 22px;
+        display: none;
+    }
+
+    &:checked:after {
+        display: block;
+        color: var(--clr-white);
+    }
+}
+
 .check-btn:hover,
-.remove-btn:hover {
-    fill: var(--clr-violet);
-    transform: translateX(0px) translateY(-3px);
+.remove-btn:hover,
+.update-btn:hover {
+    cursor: pointer;
+    transform: translateX(0px) translateY(-2px);
     transition: fill 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .todo-completed {
     text-decoration: line-through;
+}
+
+.todo-remove-disabled {
+    fill: var(--clr-gray);
+    pointer-events: none;
 }

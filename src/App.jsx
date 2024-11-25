@@ -6,8 +6,12 @@ import './App.css';
 
 function App() {
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(localStorage.getItem('input') || '');
   
+  useEffect(() => {
+    localStorage.setItem('input', inputValue);
+  }, [inputValue]);
+
   const handleAddTodo = () => {
     if (inputValue.trim()) {
       setTodos([
@@ -41,6 +45,20 @@ function App() {
     setTodos(updatedTodoList);
   };
 
+  const handleUpdateTodo = (id) => {
+    if (inputValue === '') {
+      const index = todos.findIndex((todo) => todo.id === id);
+      const updatedTodoList = [...todos];
+      if (index !== -1) {
+        updatedTodoList.splice(index, 1);
+      }
+      setTodos(updatedTodoList);
+      if (index !== -1) {
+        setInputValue(todos[index].name);
+      }
+    }
+  }
+
   const handleDeleteTodo = (id) => {
     const index = todos.findIndex(todo => todo.id === id);
     const updateTodo = [...todos];
@@ -68,7 +86,7 @@ function App() {
         />
         <button className="newtodo-btn" onClick={handleAddTodo}>Add Task</button>
       </div>
-      <TodoList todos={todos} onComplete={handleCompleteTodo} onDelete={handleDeleteTodo}/>
+      <TodoList todos={todos} onComplete={handleCompleteTodo} onDelete={handleDeleteTodo} onUpdate={handleUpdateTodo} />
     </div>
   )
 }
