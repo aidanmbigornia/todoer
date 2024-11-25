@@ -1,7 +1,7 @@
 .app-wrapper {
   display: flex;
-  height: 100vh;
-  width: 50vw;
+  height: 100dvh;
+  width: 60dvw;
   flex-direction: column;
   margin: 20px;
 }

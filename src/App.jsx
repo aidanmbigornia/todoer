@@ -60,7 +60,7 @@ function App() {
         <DebounceInput
           className="newtodo-input"
           spellCheck='false'
-          debounceTimeout={300}
+          debounceTimeout={150}
           placeholder='Create new task'
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}

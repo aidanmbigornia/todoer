@@ -15,7 +15,7 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  width: 100vw;
-  min-height: 100vh;
+  width: 100dvw;
+  min-height: 100dvh;
   background-color: #000C14;
 }
