@@ -8,9 +8,7 @@ function App() {
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
   const [inputValue, setInputValue] = useState(localStorage.getItem('input') || '');
   
-  useEffect(() => {
-    localStorage.setItem('input', inputValue);
-  }, [inputValue]);
+
 
   const handleAddTodo = () => {
     if (inputValue.trim()) {
@@ -33,16 +31,16 @@ function App() {
   };
 
   const handleCompleteTodo = (id) => {
-    const updatedTodoList = todos.map(todo => {
-        if (todo.id === id) {
-            return  {
-              ...todo,
-              done: !todo.done,
-            }
-        }
-        return todo;
-    });
-    setTodos(updatedTodoList);
+    const index = todos.findIndex((todo) => todo.id === id);
+    if (index !== 1) {
+      const updatedTodoList = [...todos];
+      updatedTodoList[index] = {
+        ...updatedTodoList[index],
+        done: !updatedTodoList[index].done
+      }
+     
+      setTodos(updatedTodoList);
+    }
   };
 
   const handleUpdateTodo = (id) => {
@@ -61,8 +59,7 @@ function App() {
     const index = todos.findIndex(todo => todo.id === id);
     const updateTodo = [...todos];
     if (index !== -1 && confirm(`remove todo item: ${todos[index].name}?`)) {
-      
-      updateTodo.splice(index, 1)      
+      updateTodo.splice(index, 1);
     }
     setTodos(updateTodo);
   }
@@ -71,6 +68,9 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
+  useEffect(() => {
+    localStorage.setItem('input', inputValue);
+  }, [inputValue]);
   return (
     <div className="app-wrapper">
       <div className="addtodo-wrapper">

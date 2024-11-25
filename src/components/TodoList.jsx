@@ -6,7 +6,7 @@ const TodoList = ({ todos, onComplete, onDelete, onUpdate }) => {
             <div className="todo-item" key={index}>
                 <div className="todo-options">
                     <div className="complete" >
-                        <input className="check-btn" type="checkbox" defaultChecked={todo.done} onClick={() => onComplete(todo.id)}/>
+                        <input className="check-btn" type="checkbox" checked={todo.done} onClick={() => onComplete(todo.id)}/>
                     </div>
                     <div className="update">
                         <svg className="update-btn" onClick={() => onUpdate(todo.id)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
