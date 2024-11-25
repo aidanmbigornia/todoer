@@ -1,7 +1,15 @@
+#root {
+  --clr-violet: #7933ff;
+  --clr-dark-violet: #6c21f8;
+  --clr-green: #0eff4e;
+  --clr-black: #000C14;
+  --clr-white: #e9e9e9;
+}
+
 .app-wrapper {
   display: flex;
   height: 100dvh;
-  width: 60dvw;
+  width: 50dvw;
   flex-direction: column;
   margin: 20px;
 }
@@ -23,18 +31,17 @@
   padding: 8px;
   border: 5px solid transparent;
   border-radius: 4px;
-  color: #0eff4e;
+  color: var(--clr-green);
   line-height: 1;
-  caret-color: #7933ff;
-  transition:  box-shadow 0.2s ease-in-out, font-size 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  caret-color: var(--clr-violet);
+  transition:  box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  
   &:focus {
-    font-size: 20px;
-    box-shadow: 1px 1px 1px 1px #7933ff;
-    
+    box-shadow: 1px 1px 1px 1px var(--clr-violet);
   }
 
   &::placeholder {
-    color: #0eff4e;
+    color: var(--clr-green);
     opacity: 0.4;
   }
 }
@@ -42,7 +49,8 @@
 .newtodo-btn {
   flex-grow: 2;
   padding: 8px;
-  background-color: #7933ff;
+  color: var(--clr-black);
+  background-color: var(--clr-violet);
   height: 60px;
   min-width: 300px;
   border: none;
@@ -54,7 +62,7 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #6c21f8;
+    background-color: var(--clr-dark-violet);
   }
 
   &:after {
@@ -68,5 +76,18 @@
   
   &:hover::after {
     transform: translateY(-50%) translateX(10px);
+  }
+}
+
+@media (min-width: 780px) {
+  .newtodo-input:focus {
+    transition: font-size 0.2s ease-in-out;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .app-wrapper {
+    width: 90dvw;
   }
 }
