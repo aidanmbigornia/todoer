@@ -1,0 +1,72 @@
+.app-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 50vw;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.addtodo-wrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 10px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.newtodo-input {
+  all:unset;
+  min-width: 300px;
+  flex-grow: 3;
+  padding: 8px;
+  border: 5px solid transparent;
+  border-radius: 4px;
+  color: #0eff4e;
+  line-height: 1;
+  caret-color: #7933ff;
+  transition:  box-shadow 0.2s ease-in-out, font-size 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  &:focus {
+    font-size: 20px;
+    box-shadow: 1px 1px 1px 1px #7933ff;
+    
+  }
+
+  &::placeholder {
+    color: #0eff4e;
+    opacity: 0.4;
+  }
+}
+
+.newtodo-btn {
+  flex-grow: 2;
+  padding: 8px;
+  background-color: #7933ff;
+  height: 60px;
+  min-width: 300px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden; 
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #6c21f8;
+  }
+
+  &:after {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) translateX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover::after {
+    transform: translateY(-50%) translateX(10px);
+  }
+}
